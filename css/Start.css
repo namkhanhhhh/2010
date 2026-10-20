@@ -1,0 +1,279 @@
+body {
+  padding: 160px 75px;
+  /* 20/10 Vietnamese Women's Day — pink-white gradient */
+  background: linear-gradient(160deg, #fff0f8 0%, #fce4ec 45%, #f8bbd0 80%, #fce4ec 100%);
+  position: relative;
+  overflow-x: hidden;
+  font-family: "Montserrat", sans-serif;
+  min-height: 100vh;
+}
+
+/* Hidden the dynamic snowflake generation to keep it lightweight and functional */
+#snowflakes-container {
+  display: none;
+}
+
+.snowflake {
+  position: absolute;
+  top: -10px;
+  color: white;
+  font-size: 1.5em;
+  user-select: none;
+  z-index: 1000;
+  animation-name: snowfall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
+  /* 20/10 — deep pink */
+  color: #c2185b;
+  text-shadow: 0 0 14px rgba(233, 30, 140, 0.25);
+  font-weight: 700;
+}
+
+.main-div {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+#button {
+  display: block;
+  margin: 0 auto 2rem auto;
+  color: #c2185b;
+  font-weight: bold;
+  border-color: #e91e8c;
+}
+
+#button:hover {
+  color: white;
+  background-color: #e91e8c;
+  border-color: #e91e8c;
+}
+
+/* password input */
+.form-control {
+  width: 35%;
+  margin: 0 auto 2rem auto;
+  border-width: 0 0 medium 0;
+  /* Border to pink */
+  border-color: #e91e8c;
+  border-radius: 0;
+  text-align: center;
+  /* Match background */
+  background-color: transparent;
+  color: #c2185b;
+}
+
+.rolling-eyes {
+  display: block;
+  margin: 0 auto 0 auto;
+  margin-bottom: 3.5rem;
+}
+
+#hint {
+  display: block;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* responsivene */
+@media (max-width: 1092px) {
+  .img6L,
+  .img10L,
+  .img9L,
+  .img3L {
+    clip-path: circle(0);
+  }
+}
+
+@media (max-width: 460px) {
+  .title,
+  .wrong-password {
+    display: block;
+    font-size: 20px;
+  }
+
+  .main-div {
+    position: relative;
+    margin: 0 auto 0 auto;
+  }
+
+  .form-control {
+    width: 100%;
+  }
+
+  .rolling-eyes {
+    width: 24px;
+    height: 24px;
+  }
+
+  .img6L,
+  .img10L,
+  .img9L,
+  .img3L {
+  }
+
+  .img10L {
+    clip-path: circle(100%);
+  }
+
+  .img5M,
+  .img1S,
+  .img13M {
+    clip-path: circle(0);
+  }
+
+  .img12M {
+    top: 120%;
+    margin-left: 210px;
+  }
+
+  .img4S {
+    margin-left: 40px;
+    top: 10px;
+  }
+
+  .img7S {
+    margin-left: 110px;
+  }
+
+  .title {
+    font-size: 25px;
+  }
+}
+
+/* removes defult bootstrap blue borders from input */
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active {
+  outline: 0 !important;
+  -webkit-appearance: none;
+  box-shadow: none !important;
+}
+
+input[type="password"]:focus {
+  background-color: rgba(233, 30, 140, 0.06);
+  color: #c2185b;
+}
+
+input[type="password"] {
+  color: #c2185b;
+  font-weight: bold;
+}
+
+input[type="password"]:hover,
+input[type="password"]:active,
+input[type="password"]:focus {
+  border-color: #e91e8c;
+  color: #c2185b;
+  caret-color: #e91e8c;
+}
+
+/* gift images position */
+.gift-img {
+  display: block;
+  position: absolute;
+}
+
+.img9L {
+  transform: rotate(20deg);
+  bottom: 110%;
+  left: 60%;
+}
+
+.img6L {
+  transform: rotate(-30deg);
+  bottom: 50%;
+  left: 5%;
+}
+
+.img3L {
+  transform: rotate(10deg);
+  left: 75%;
+}
+
+.img10L {
+  transform: rotate(-45deg);
+  left: 20%;
+  top: 170%;
+}
+
+.img1S {
+  left: 35%;
+  top: 110%;
+  transform: rotate(10deg);
+}
+
+.img4S {
+  left: 95%;
+  bottom: 100%;
+  transform: rotate(-10deg);
+}
+
+.img7S {
+  left: 32%;
+  bottom: 130%;
+  transform: rotate(20deg);
+}
+
+.img11S {
+  top: 185%;
+  transform: rotate(-25deg);
+}
+
+.img8M {
+  left: 103%;
+  bottom: 20%;
+  transform: rotate(20deg);
+}
+
+.img5M {
+  left: 52%;
+  top: 170%;
+  transform: rotate(10deg);
+}
+
+.img2M {
+  left: 7%;
+  top: 110%;
+  transform: rotate(-15deg);
+}
+
+.img12M {
+  left: -8%;
+  bottom: 120%;
+  transform: rotate(15deg);
+}
+
+.img13M {
+  left: 80%;
+  bottom: 50%;
+  transform: rotate(10deg);
+}

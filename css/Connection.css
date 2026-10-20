@@ -1,0 +1,198 @@
+/* ===== Connection Page – 20/10 Pink Theme ===== */
+:root {
+  --pink-deep:  #c2185b;
+  --pink-main:  #e91e8c;
+  --pink-light: #f48fb1;
+  --pink-pale:  #fce4ec;
+  --rose-gold:  #e8a0b4;
+}
+
+/* ===== Background ===== */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(160deg, #fff0f8 0%, #fce4ec 45%, #f8bbd0 80%, #fce4ec 100%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  position: relative;
+}
+
+/* ===== Stage ===== */
+#main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+}
+
+/* ===== Central Gift Box ===== */
+.gift-center {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.gift-icon {
+  font-size: clamp(80px, 18vw, 140px);
+  animation: gift-float 3s ease-in-out infinite;
+  filter: drop-shadow(0 8px 24px rgba(233,30,140,0.35));
+  transition: transform 0.2s ease;
+  user-select: none;
+}
+
+.gift-icon:hover {
+  transform: scale(1.08);
+}
+
+@keyframes gift-float {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%       { transform: translateY(-12px) rotate(2deg); }
+}
+
+.gift-hint {
+  margin-top: 1rem;
+  font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+  color: var(--pink-deep);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  opacity: 0.8;
+  animation: pulse-text 2s ease-in-out infinite;
+}
+
+@keyframes pulse-text {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.04); }
+}
+
+/* ===== Burst particles (spawned by JS) ===== */
+.burst-particle {
+  position: fixed;
+  pointer-events: none;
+  font-size: 1.8rem;
+  z-index: 20;
+  animation: burst-fly linear forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes burst-fly {
+  0%   { transform: translate(0, 0) scale(1) rotate(0deg);   opacity: 1; }
+  100% { transform: var(--tx, 0) var(--ty, 0) scale(0.3) rotate(var(--rot, 360deg)); opacity: 0; }
+}
+
+/* ===== Ripple on click ===== */
+.ripple {
+  position: fixed;
+  border-radius: 50%;
+  border: 3px solid var(--pink-main);
+  pointer-events: none;
+  z-index: 15;
+  animation: ripple-expand 0.8s ease-out forwards;
+}
+
+@keyframes ripple-expand {
+  0%   { transform: scale(0); opacity: 0.9; }
+  100% { transform: scale(6); opacity: 0; }
+}
+
+/* ===== Gift images (legacy compatibility + enhanced) ===== */
+.gift {
+  position: absolute;
+  opacity: 0;
+  transform: scale(0) rotate(var(--rot, 0deg));
+  transition: opacity 0.4s ease, transform 0.6s cubic-bezier(.34,1.56,.64,1);
+  filter: drop-shadow(0 6px 16px rgba(233,30,140,0.3));
+  pointer-events: none;
+}
+
+/* When shown via JS */
+.gift.show {
+  opacity: 1;
+  transform: scale(1) rotate(var(--rot, 0deg));
+}
+
+/* Individual positions – scattered around center */
+.img1  { --rot: -20deg; top: 10%;  left: 5%;  }
+.img3  { --rot:  15deg; top: 60%;  left: 3%;  }
+.img4  { --rot: -10deg; top: 5%;   right: 5%; }
+.img5  { --rot:  25deg; top: 65%;  right: 4%; }
+.img6  { --rot: -30deg; bottom: 5%; left: 15%; }
+.img7  { --rot:  10deg; bottom: 5%; right: 15%; }
+.img8  { --rot: -15deg; top: 40%;  right: 2%; }
+
+/* ===== Background floating petals (decorative) ===== */
+.bg-petal {
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  font-size: 1.2rem;
+  animation: bg-petal-fall linear infinite;
+}
+
+@keyframes bg-petal-fall {
+  0%   { transform: translateY(0)      rotate(0deg);   opacity: 0; }
+  8%   { opacity: 0.6; }
+  90%  { opacity: 0.4; }
+  100% { transform: translateY(105vh)  rotate(520deg); opacity: 0; }
+}
+
+/* ===== Reveal message ===== */
+.reveal-text {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, rgba(255,240,248,0.96) 0%, rgba(252,228,236,0.98) 100%);
+  z-index: 30;
+  opacity: 0;
+  pointer-events: none;
+  animation: none;
+}
+
+.reveal-text.show {
+  animation: reveal-in 0.7s ease forwards;
+}
+
+@keyframes reveal-in {
+  0%   { opacity: 0; transform: scale(0.8); }
+  60%  { transform: scale(1.04); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.reveal-emoji { font-size: clamp(4rem, 14vw, 8rem); animation: pop 0.5s ease 0.3s both; }
+.reveal-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.8rem, 7vw, 3.5rem);
+  color: var(--pink-deep);
+  margin-top: 0.5rem;
+  animation: pop 0.5s ease 0.5s both;
+}
+
+@keyframes pop {
+  0%   { transform: scale(0); opacity: 0; }
+  70%  { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ===== Legacy .hide ===== */
+.hide { opacity: 0 !important; transform: scale(0) !important; }
+
+/* ===== Responsive ===== */
+@media (max-width: 576px) {
+  .gift { width: 60px; height: auto; }
+  .img8 { display: none; }
+}
+
